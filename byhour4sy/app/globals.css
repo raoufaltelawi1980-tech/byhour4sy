@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-arabic: "Tajawal", sans-serif;
+}
+
+body {
+  background-color: #f5f1eb;
+  color: #12372a;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 14px rgba(18, 55, 42, 0.1);
+}
