@@ -24,7 +24,7 @@ export default function Home() {
     <main className="max-w-6xl mx-auto px-4 py-8">
       <header className="flex flex-col items-center text-center mb-10">
         <Image
-          src="/images/logo-new.svg"
+          src="/images/logo-new.svg?v=2"
           alt="شعار بالساعة"
           width={260}
           height={152}
