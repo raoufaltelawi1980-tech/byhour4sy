@@ -22,13 +22,12 @@ const categories = [
 export default function Home() {
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
-      {/* الهيدر */}
       <header className="flex flex-col items-center text-center mb-10">
         <Image
-          src="/images/logo.png"
-          alt="بالساعة"
+          src="/images/logo-new.svg"
+          alt="شعار بالساعة"
           width={260}
-          height={146}
+          height={152}
           priority
         />
         <p className="text-primary/80 mt-2 font-medium">
@@ -36,7 +35,6 @@ export default function Home() {
         </p>
       </header>
 
-      {/* الأقسام الخمسة */}
       <section className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
         {sections.map((s) => (
           <button
@@ -49,7 +47,6 @@ export default function Home() {
         ))}
       </section>
 
-      {/* التصنيفات الثمانية */}
       <section>
         <h2 className="text-xl font-bold text-primary mb-4">تصفح حسب التصنيف</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
