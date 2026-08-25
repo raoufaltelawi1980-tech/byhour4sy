@@ -53,15 +53,18 @@ export default function Home() {
           {categories.map((c) => (
             <div
               key={c.key}
-              className="bg-white rounded-2xl overflow-hidden card-shadow hover:-translate-y-1 transition cursor-pointer"
+              className="bg-white rounded-2xl overflow-hidden card-shadow hover:-translate-y-1 transition cursor-pointer flex flex-col items-center"
             >
-              <div className="relative w-full aspect-square">
+              <div className="relative w-full aspect-square p-4">
                 <Image
                   src={`/images/categories/${c.key}.png`}
                   alt={c.name}
                   fill
-                  className="object-cover"
+                  className="object-contain p-3"
                 />
+              </div>
+              <div className="w-full text-center pb-4 -mt-2">
+                <span className="text-base font-bold text-primary">{c.name}</span>
               </div>
             </div>
           ))}
