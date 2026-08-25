@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AuthButton from "@/app/components/AuthButton";
 
 const sections = [
   { name: "مطلوب", desc: "اطلب الخدمة اللي بدك ياها", color: "bg-primary" },
@@ -22,6 +23,9 @@ const categories = [
 export default function Home() {
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
+      <div className="flex justify-end mb-2">
+        <AuthButton />
+      </div>
       <header className="flex flex-col items-center text-center mb-10">
         <Image
           src="/images/logo-new.png?v=4"
