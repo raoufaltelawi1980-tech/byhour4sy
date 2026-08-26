@@ -24,8 +24,15 @@ export default function Home() {
           height={152}
           priority
         />
-        <p className="text-primary/80 mt-2 font-medium">
-          خدمات سوريا.. بلمسة واحدة — ابحث · اختر · احجز · أنجز
+        <div className="flex items-center justify-between w-full max-w-xs mt-2 px-2" dir="ltr">
+          <span className="text-2xl font-extrabold text-primary">By-Hour</span>
+          <span className="text-2xl font-extrabold text-primary" dir="rtl">بالساعة</span>
+        </div>
+        <p className="text-primary font-bold mt-3 text-lg">
+          خدمات سورية بلمسة واحدة
+        </p>
+        <p className="text-primary/90 font-bold mt-1">
+          أضف اعلان أو خدمة أو أبحث ع أي شيء تحتاجه
         </p>
       </header>
 
