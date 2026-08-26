@@ -2,11 +2,11 @@ import Image from "next/image";
 import CategoryGrid from "@/app/components/CategoryGrid";
 
 const sections = [
-  { name: "مطلوب", desc: "اطلب الخدمة اللي بدك ياها", color: "bg-primary" },
-  { name: "معروض", desc: "قدّم خدمتك للناس", color: "bg-primary-light" },
-  { name: "للبيع", desc: "بيع أغراضك بسهولة", color: "bg-accent" },
-  { name: "للشراء", desc: "دور على اللي بدك تشتريه", color: "bg-primary" },
-  { name: "وظائف", desc: "دور على شغل أو موظف", color: "bg-primary-light" },
+  { key: "wanted", name: "مطلوب" },
+  { key: "offered", name: "معروض" },
+  { key: "for_sale", name: "للبيع" },
+  { key: "for_buy", name: "للشراء" },
+  { key: "jobs", name: "وظائف" },
 ];
 
 export default function Home() {
@@ -57,11 +57,16 @@ export default function Home() {
       <section className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
         {sections.map((s) => (
           <button
-            key={s.name}
-            className={`${s.color} text-white rounded-2xl p-5 text-center card-shadow hover:opacity-90 transition`}
+            key={s.key}
+            className="relative rounded-2xl overflow-hidden card-shadow hover:-translate-y-1 transition"
           >
-            <div className="text-lg font-bold mb-1">{s.name}</div>
-            <div className="text-xs opacity-90">{s.desc}</div>
+            <Image
+              src={`/images/sections/${s.key}.png`}
+              alt={s.name}
+              width={510}
+              height={525}
+              className="w-full h-auto"
+            />
           </button>
         ))}
       </section>
