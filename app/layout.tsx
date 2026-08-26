@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import SiteHeader from "@/app/components/SiteHeader";
 
 export const metadata: Metadata = {
   title: "بالساعة | سوق يومي للخدمات والسلع والوظائف في سوريا",
@@ -19,7 +20,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-arabic min-h-screen">{children}</body>
+      <body className="font-arabic min-h-screen bg-[#F7F7F5]">
+        <SiteHeader />
+        {children}
+      </body>
     </html>
   );
 }
