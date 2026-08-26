@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AuthButton from "@/app/components/AuthButton";
+import CategoryGrid from "@/app/components/CategoryGrid";
 
 const sections = [
   { name: "مطلوب", desc: "اطلب الخدمة اللي بدك ياها", color: "bg-primary" },
@@ -7,17 +8,6 @@ const sections = [
   { name: "للبيع", desc: "بيع أغراضك بسهولة", color: "bg-accent" },
   { name: "للشراء", desc: "دور على اللي بدك تشتريه", color: "bg-primary" },
   { name: "وظائف", desc: "دور على شغل أو موظف", color: "bg-primary-light" },
-];
-
-const categories = [
-  { key: "real_estate", name: "عقارات" },
-  { key: "health_care", name: "صحة ورعاية" },
-  { key: "commercial", name: "تجاري" },
-  { key: "vehicles", name: "سيارات وآليات" },
-  { key: "general_services", name: "خدمات عامة" },
-  { key: "agriculture", name: "زراعي" },
-  { key: "industrial", name: "صناعي" },
-  { key: "donation", name: "تبرع وكفالة" },
 ];
 
 export default function Home() {
@@ -53,26 +43,7 @@ export default function Home() {
 
       <section>
         <h2 className="text-xl font-bold text-primary mb-4">تصفح حسب التصنيف</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {categories.map((c) => (
-            <div
-              key={c.key}
-              className="bg-white rounded-2xl overflow-hidden card-shadow hover:-translate-y-1 transition cursor-pointer flex flex-col items-center"
-            >
-              <div className="relative w-full aspect-square p-4">
-                <Image
-                  src={`/images/categories/${c.key}.png`}
-                  alt={c.name}
-                  fill
-                  className="object-contain p-3"
-                />
-              </div>
-              <div className="w-full text-center pb-4 -mt-2">
-                <span className="text-base font-bold text-primary">{c.name}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+        <CategoryGrid />
       </section>
     </main>
   );
