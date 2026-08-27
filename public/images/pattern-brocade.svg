@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="130" viewBox="0 0 130 130">
+  <defs>
+    <g id="star">
+      <polygon points="32,0 0,32 -32,0 0,-32" />
+      <polygon points="22.6,22.6 -22.6,22.6 -22.6,-22.6 22.6,-22.6" />
+    </g>
+  </defs>
+  <g fill="none" stroke="#12372A" stroke-width="1" opacity="0.10" stroke-linejoin="round">
+    <use href="#star" x="0" y="0"/>
+    <use href="#star" x="65" y="0"/>
+    <use href="#star" x="130" y="0"/>
+    <use href="#star" x="0" y="65"/>
+    <use href="#star" x="65" y="65"/>
+    <use href="#star" x="130" y="65"/>
+    <use href="#star" x="0" y="130"/>
+    <use href="#star" x="65" y="130"/>
+    <use href="#star" x="130" y="130"/>
+  </g>
+</svg>
