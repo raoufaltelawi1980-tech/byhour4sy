@@ -20,7 +20,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-arabic min-h-screen bg-[#F7F7F5]">
+      <body className="font-arabic min-h-screen">
         <SiteHeader />
         {children}
       </body>
