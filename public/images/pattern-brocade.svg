@@ -1,19 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="130" viewBox="0 0 130 130">
+<svg xmlns="http://www.w3.org/2000/svg" width="168" height="84" viewBox="0 0 168 84">
   <defs>
-    <g id="star">
-      <polygon points="32,0 0,32 -32,0 0,-32" />
-      <polygon points="22.6,22.6 -22.6,22.6 -22.6,-22.6 22.6,-22.6" />
-    </g>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#F4E5A1"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
   </defs>
-  <g fill="none" stroke="#12372A" stroke-width="1" opacity="0.10" stroke-linejoin="round">
-    <use href="#star" x="0" y="0"/>
-    <use href="#star" x="65" y="0"/>
-    <use href="#star" x="130" y="0"/>
-    <use href="#star" x="0" y="65"/>
-    <use href="#star" x="65" y="65"/>
-    <use href="#star" x="130" y="65"/>
-    <use href="#star" x="0" y="130"/>
-    <use href="#star" x="65" y="130"/>
-    <use href="#star" x="130" y="130"/>
+  <g fill="none" stroke="url(#gold)" stroke-width="1.2" opacity="0.22">
+    <path d="M -84,-42 A 42,42 0 0 1 0,-42" />
+    <path d="M 0,-42 A 42,42 0 0 1 84,-42" />
+    <path d="M 84,-42 A 42,42 0 0 1 168,-42" />
+    <path d="M 168,-42 A 42,42 0 0 1 252,-42" />
+    <path d="M 252,-42 A 42,42 0 0 1 336,-42" />
+    <path d="M -126,0 A 42,42 0 0 1 -42,0" />
+    <path d="M -42,0 A 42,42 0 0 1 42,0" />
+    <path d="M 42,0 A 42,42 0 0 1 126,0" />
+    <path d="M 126,0 A 42,42 0 0 1 210,0" />
+    <path d="M 210,0 A 42,42 0 0 1 294,0" />
+    <path d="M -84,42 A 42,42 0 0 1 0,42" />
+    <path d="M 0,42 A 42,42 0 0 1 84,42" />
+    <path d="M 84,42 A 42,42 0 0 1 168,42" />
+    <path d="M 168,42 A 42,42 0 0 1 252,42" />
+    <path d="M 252,42 A 42,42 0 0 1 336,42" />
+    <path d="M -126,84 A 42,42 0 0 1 -42,84" />
+    <path d="M -42,84 A 42,42 0 0 1 42,84" />
+    <path d="M 42,84 A 42,42 0 0 1 126,84" />
+    <path d="M 126,84 A 42,42 0 0 1 210,84" />
+    <path d="M 210,84 A 42,42 0 0 1 294,84" />
   </g>
 </svg>
