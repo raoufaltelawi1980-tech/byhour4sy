@@ -112,14 +112,13 @@ export default function Home() {
         {sections.map((s) => (
           <button
             key={s.key}
-            className="relative rounded-2xl overflow-hidden card-shadow hover:-translate-y-1 transition"
+            className="relative aspect-square rounded-2xl overflow-hidden card-shadow hover:-translate-y-1 transition"
           >
             <Image
               src={`/images/sections/${s.key}.png`}
               alt={s.name}
-              width={510}
-              height={525}
-              className="w-full h-auto"
+              fill
+              className="object-cover"
             />
           </button>
         ))}
