@@ -47,6 +47,8 @@ export default function PostPage() {
 
   const [categories, setCategories] = useState(CATEGORIES);
   const [regions, setRegions] = useState<{ id: number; name_ar: string }[]>([]);
+  const [subcategories, setSubcategories] = useState<{ id: number; name_ar: string }[]>([]);
+  const [subcategoryId, setSubcategoryId] = useState<number | "">("");
 
   const [section, setSection] = useState("offered");
   const [categoryKey, setCategoryKey] = useState("general_services");
@@ -82,6 +84,24 @@ export default function PostPage() {
         if (data) setRegions(data);
       });
   }, []);
+
+  useEffect(() => {
+    const cat = categories.find((c) => c.key === categoryKey);
+    if (!cat?.id) {
+      setSubcategories([]);
+      setSubcategoryId("");
+      return;
+    }
+    supabase
+      .from("subcategories")
+      .select("id, name_ar")
+      .eq("category_id", cat.id)
+      .order("sort_order")
+      .then(({ data }) => {
+        setSubcategories(data ?? []);
+        setSubcategoryId("");
+      });
+  }, [categoryKey, categories]);
 
   const numericPrice = parseFloat(price) || 0;
   const commission = useMemo(
@@ -143,6 +163,7 @@ export default function PostPage() {
       owner_id: user!.id,
       section,
       category_id: cat.id,
+      subcategory_id: subcategoryId || null,
       region_id: regionId,
       title: title.trim(),
       description: description.trim() || null,
@@ -225,6 +246,27 @@ export default function PostPage() {
             ))}
           </select>
         </div>
+
+        {/* القسم الفرعي */}
+        {subcategories.length > 0 && (
+          <div>
+            <label className="block font-bold text-primary mb-2">
+              القسم الفرعي (اختياري)
+            </label>
+            <select
+              value={subcategoryId}
+              onChange={(e) => setSubcategoryId(Number(e.target.value))}
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 bg-gray-50"
+            >
+              <option value="">حدد بدقة أكثر (اختياري)</option>
+              {subcategories.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.name_ar}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
 
         {/* المنطقة */}
         <div>
