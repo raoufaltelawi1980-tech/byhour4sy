@@ -1,5 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import CategoryGrid from "@/app/components/CategoryGrid";
+import { supabase } from "@/lib/supabase";
+
+export const dynamic = "force-dynamic";
 
 const sections = [
   { key: "wanted", name: "مطلوب" },
@@ -9,7 +13,14 @@ const sections = [
   { key: "jobs", name: "وظائف" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const { data: latestAds } = await supabase
+    .from("ads")
+    .select("id, title, section, price, price_note, created_at, categories(name_ar), regions(name_ar)")
+    .eq("status", "active")
+    .order("created_at", { ascending: false })
+    .limit(6);
+
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
       <header className="flex flex-col items-center text-center mb-8">
@@ -110,9 +121,10 @@ export default function Home() {
 
       <section className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
         {sections.map((s) => (
-          <button
+          <Link
             key={s.key}
-            className="relative aspect-square rounded-2xl overflow-hidden card-shadow hover:-translate-y-1 transition"
+            href={`/section/${s.key}`}
+            className="relative aspect-square rounded-2xl overflow-hidden card-shadow hover:-translate-y-1 transition block"
           >
             <Image
               src={`/images/sections/${s.key}.png`}
@@ -120,13 +132,36 @@ export default function Home() {
               fill
               className="object-cover"
             />
-          </button>
+          </Link>
         ))}
       </section>
 
       <section id="categories">
         <h2 className="text-xl font-bold text-primary mb-4">تصفح حسب التصنيف</h2>
         <CategoryGrid />
+      </section>
+
+      <section id="latest" className="mt-12">
+        <h2 className="text-xl font-bold text-primary mb-4">أحدث الإعلانات</h2>
+        {!latestAds || latestAds.length === 0 ? (
+          <div className="bg-white rounded-2xl p-8 text-center card-shadow">
+            <p className="text-gray-500">لا توجد إعلانات منشورة بعد.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {latestAds.map((ad: any) => (
+              <div key={ad.id} className="bg-white rounded-2xl p-4 card-shadow">
+                <h3 className="font-bold text-primary mb-1">{ad.title}</h3>
+                <p className="text-xs text-gray-400 mb-2">
+                  {ad.categories?.name_ar} · {ad.regions?.name_ar}
+                </p>
+                <p className="text-sm text-gray-600">
+                  {ad.price_note || (ad.price ? `${ad.price} $` : "السعر غير محدد")}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );
