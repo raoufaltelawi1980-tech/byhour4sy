@@ -20,7 +20,7 @@ export default async function SectionPage({
   const { data: ads } = await supabase
     .from("ads")
     .select("id, title, price, price_note, created_at, categories(name_ar), regions(name_ar)")
-    .eq("section", key)
+    .eq("section", name)
     .eq("status", "active")
     .order("created_at", { ascending: false });
 

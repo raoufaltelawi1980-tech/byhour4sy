@@ -14,6 +14,15 @@ const SECTIONS = [
   { key: "jobs", name: "وظائف" },
 ];
 
+// قاعدة البيانات مبنية على قيم عربية لعمود section (قيد Check Constraint)
+const SECTION_DB_VALUE: Record<string, string> = {
+  wanted: "مطلوب",
+  offered: "معروض",
+  for_sale: "للبيع",
+  for_buy: "للشراء",
+  jobs: "وظائف",
+};
+
 const CATEGORIES = [
   { id: null as number | null, key: "real_estate", name: "عقارات" },
   { id: null as number | null, key: "health_care", name: "صحة ورعاية" },
@@ -161,7 +170,7 @@ export default function PostPage() {
     setSubmitting(true);
     const { error: insertError } = await supabase.from("ads").insert({
       owner_id: user!.id,
-      section,
+      section: SECTION_DB_VALUE[section] ?? section,
       category_id: cat.id,
       subcategory_id: subcategoryId || null,
       region_id: regionId,
@@ -173,7 +182,7 @@ export default function PostPage() {
     setSubmitting(false);
 
     if (insertError) {
-      setError("صار خطأ بنشر الإعلان، جرب مرة تانية.");
+      setError(`صار خطأ بنشر الإعلان: ${insertError.message}`);
       return;
     }
     setSuccess(true);
