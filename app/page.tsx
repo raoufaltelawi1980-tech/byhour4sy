@@ -16,7 +16,7 @@ const sections = [
 export default async function Home() {
   const { data: latestAds } = await supabase
     .from("ads")
-    .select("id, title, section, price, price_note, created_at, categories(name_ar), regions(name_ar)")
+    .select("id, title, description, section, price, price_note, created_at, categories(name_ar), regions(name_ar)")
     .eq("status", "active")
     .order("created_at", { ascending: false })
     .limit(6);
@@ -150,15 +150,24 @@ export default async function Home() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {latestAds.map((ad: any) => (
-              <div key={ad.id} className="bg-white rounded-2xl p-4 card-shadow">
+              <Link
+                key={ad.id}
+                href={`/ad/${ad.id}`}
+                className="block bg-white rounded-2xl p-4 card-shadow hover:-translate-y-0.5 transition"
+              >
                 <h3 className="font-bold text-primary mb-1">{ad.title}</h3>
                 <p className="text-xs text-gray-400 mb-2">
                   {ad.categories?.name_ar} · {ad.regions?.name_ar}
                 </p>
-                <p className="text-sm text-gray-600">
+                {ad.description && (
+                  <p className="text-sm text-gray-500 mb-2 line-clamp-2">
+                    {ad.description}
+                  </p>
+                )}
+                <p className="text-sm text-gray-600 font-bold">
                   {ad.price_note || (ad.price ? `${ad.price} $` : "السعر غير محدد")}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
         )}
