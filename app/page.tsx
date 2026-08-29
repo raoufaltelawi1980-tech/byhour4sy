@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import CategoryGrid from "@/app/components/CategoryGrid";
+import StaticBanner from "@/app/components/StaticBanner";
+import RotatingBanner from "@/app/components/RotatingBanner";
 import { supabase } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
@@ -23,6 +25,10 @@ export default async function Home() {
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
+      <div className="mb-6">
+        {/* @ts-expect-error Server Component */}
+        <StaticBanner placementCode="home_top" />
+      </div>
       <header className="flex flex-col items-center text-center mb-8">
         <Image
           src="/images/logo-new.png?v=4"
@@ -140,6 +146,10 @@ export default async function Home() {
         <h2 className="text-xl font-bold text-primary mb-4">تصفح حسب التصنيف</h2>
         <CategoryGrid />
       </section>
+
+      <div className="my-8">
+        <RotatingBanner />
+      </div>
 
       <section id="latest" className="mt-12">
         <h2 className="text-xl font-bold text-primary mb-4">أحدث الإعلانات</h2>
